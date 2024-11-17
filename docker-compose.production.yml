@@ -6,23 +6,23 @@ volumes:
 
 services:
   db:
-    build: postgres:13.10
+    image: postgres:13.10
     env_file: .env
     volumes:
       - pg_data_production:/var/lib/postgresql/data
   backend:
-    build: pismokb/taski_backend
+    image: pismokb/taski_backend
     env_file: .env
     volumes:
       - static_volume:/backend_static
   frontend:
-    build: pismokb/taski_frontend
+    image: pismokb/taski_frontend
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static_volume:/frontend_static
   gateway:
-    build: pismokb/taski_gateway
+    image: pismokb/taski_gateway
     env_file: .env
     volumes:
       - static_volume:/staticfiles/
