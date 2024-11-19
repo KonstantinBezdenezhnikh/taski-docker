@@ -18,6 +18,7 @@ services:
   frontend:
     env_file: .env
     image: pismokb/taski_frontend
+    command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
 
